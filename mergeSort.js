@@ -3,19 +3,20 @@ function mergeSort(arr){
         return arr;
     }
 
-    let mid = arr.length / 2;
+    let mid = Math.floor(arr.length / 2);
     let left = mergeSort(arr.slice(0, mid));    
     let right = mergeSort(arr.slice(mid, arr.length));    
     return merge(left, right);
 }
 
-function merge(left, right){    
+function merge(left, right){        
     let arraySorted = [];
     while(left.length > 0 || right.length > 0){
-        if(left[0] <= right[0] || right.length === 0){
+        console.log(left[0], right[0]);
+        if(right.length === 0 || left[0] <= right[0]){
             arraySorted.push(left.shift());
         }
-        else if(right[0] < left[0] || left.length === 0){
+        else if(left.length === 0 || right[0] < left[0]){
             arraySorted.push(right.shift());
         }
     }    
